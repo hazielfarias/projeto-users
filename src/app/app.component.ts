@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { JsonApiService } from './services/json-api/json-api.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 
@@ -13,17 +12,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  constructor(private jsonApiService: JsonApiService) { }
-  
-  ngOnInit() {
-    this.jsonApiService.getAllUsers().subscribe({
-      next: (res: any) => {
-        console.log(res);
+export class AppComponent {
+  constructor() { }
 
-      },
-      error: () => { }
-    })
-  }
   title = 'projeto-users';
 }

@@ -20,7 +20,7 @@ export class MessageService {
     this.snackBar.open(message, 'fechar', {
       verticalPosition: this.defaultPosition.vertical,
       horizontalPosition: this.defaultPosition.horizontal,
-      duration: 3000
+      duration: 3000,
     })
   }
 }

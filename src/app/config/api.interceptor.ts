@@ -10,17 +10,26 @@ export function ApiInterceptor(req: HttpRequest<unknown>,
   const messageService = inject(MessageService)
   loadingService.startLoading();
 
+  const statusCodeDict = {
+    0: 'Erro desconhecido',
+    200: 'OK',
+    201: 'Criado',
+    202: 'Aceito',
+    204: 'Sem Conteúdo',
+    400: 'Requisição Inválida',
+    401: 'Não Autorizado',
+    403: 'Proibido',
+    404: 'Não Encontrado',
+    500: 'Erro Interno do Servidor',
+  };
+
   return next(req)
     .pipe(
-      mergeMap((response) => {
-        return of(response).pipe(
-          catchError((error) => {
-            const err = new Error(error.message);
-            messageService.show('Ocorreu um erro. Erro: ' + error.statusText)
-            return throwError(() => err);
-          }), finalize(() => loadingService.stopLoading())
-        )
-      })
-
+      catchError((error) => {
+        const err = new Error(error.message);
+        console.error(error);
+        messageService.show('Ocorreu um erro. Erro: ' + statusCodeDict[error.status as keyof typeof statusCodeDict]);
+        return throwError(() => err);
+      }), finalize(() => loadingService.stopLoading())
     )
 }
