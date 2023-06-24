@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+$palette: (
+    light: #ffffff,
+    dark: #303030,
+);
+
+@function getColor($name) {
+    @return map-get($palette, $name);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: getColor(dark);
+    color: getColor(light);
+}
