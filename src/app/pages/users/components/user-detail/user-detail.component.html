@@ -1,1 +1,22 @@
-<p>user-detail works!</p>
+<div class="detail">
+
+    <mat-list>
+        <mat-list-item>Id: {{data.id}}</mat-list-item>
+        <mat-list-item>Nome: {{data.name}}</mat-list-item>
+        <mat-list-item>Nome de usuário: {{data.username}}</mat-list-item>
+        <mat-list-item>Email: {{data.email}}</mat-list-item>
+        <mat-list-item>Site: <a [href]="'https://'+data.website" target="_blank">{{data.website}}</a></mat-list-item>
+        <mat-list-item>Telefone: {{data.phone}}</mat-list-item>
+        <mat-list-item>
+
+            Endereço: Rua {{data.address.street}}, {{data.address.suite}}, {{data.address.city}}, <br>
+            CEP: {{data.address.zipcode}}
+
+        </mat-list-item>
+        <mat-list-item> Empresa: {{data.company.name}} </mat-list-item>
+    </mat-list>
+
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]>Fechar</button>
+    </div>
+</div>

@@ -11,7 +11,7 @@ export class LoadingService {
   constructor(private dialog: MatDialog) { }
 
   startLoading() {
-    this.dialogRef = this.dialog.open(LoadingComponent)
+    this.dialogRef = this.dialog.open(LoadingComponent, { disableClose: true })
   }
 
   stopLoading() {

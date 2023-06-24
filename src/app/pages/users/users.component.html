@@ -1,3 +1,6 @@
 <div class="search-area">
     <app-search-input [formControl]="search"></app-search-input>
 </div>
+<app-users-card-list *ngIf="windowWidth<=425" [dataSource]="displayedData" (clickRow)="showDetail($event)"></app-users-card-list>
+<app-users-table *ngIf="windowWidth>425" [dataSource]="displayedData" [displayedColumns]="columns"
+    (clickRow)="showDetail($event)"></app-users-table>
